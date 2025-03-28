@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format:fix": "prettier --write .",
-    "prepare": "husky install"
+    "format:fix": "prettier --write ."
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
