@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
+import Image from 'next/image';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,7 +31,28 @@ export default function RootLayout({
       >
         <Header />
         <main>{children}</main>
-        <footer>Link | 2025 | Logo</footer>
+        <footer className="flex justify-between align-baseline p-2">
+          <a
+            href="https://github.com/woodo01/graphiql-app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github Profile
+          </a>
+          <p>| 2025 |</p>
+          <a
+            href="https://rs.school/courses/reactjs"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Image
+              src="/rss-logo.svg"
+              alt="Rolling Scopes Logo"
+              width={50}
+              height={50}
+            ></Image>
+          </a>
+        </footer>
       </body>
     </html>
   );
