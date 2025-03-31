@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <Header />
         <main>{children}</main>
-        <footer className="flex justify-between align-baseline p-2">
+        <footer className="flex justify-between items-end p-2">
           <a
             href="https://github.com/woodo01/graphiql-app"
             target="_blank"
@@ -48,8 +48,8 @@ export default function RootLayout({
             <Image
               src="/rss-logo.svg"
               alt="Rolling Scopes Logo"
-              width={50}
-              height={50}
+              width={45}
+              height={45}
             ></Image>
           </a>
         </footer>
