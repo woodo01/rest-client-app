@@ -1,5 +1,6 @@
 'use client';
 
+import formSchema from '@/lib/validation';
 import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
@@ -7,19 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
-const formSchema = z.object({
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, { message: 'Password must contain at least 8 characters' })
-    .regex(/\d/, { message: 'Password must contain at least one number' })
-    .regex(/[@!*?$%&]/, {
-      message: 'Password must include a special character',
-    })
-    .regex(/[a-z]/i, { message: 'Password must include at least one letter' }),
-});
-
-export function SignUp() {
+export function AuthForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -64,3 +53,5 @@ export function SignUp() {
     </Form>
   );
 }
+
+export default AuthForm;
