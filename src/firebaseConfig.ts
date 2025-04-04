@@ -1,16 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-
-interface AuthCredentials {
-  email: string;
-  password: string;
-}
+import { AuthCredentials } from './app/types/shared';
 
 const firebaseConfig = {
   apiKey: 'process.env.NEXT_PUBLIC_FIREBASE_API_KEY',
@@ -25,22 +20,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
-const logInWithEmailAndPassword = async ({
-  email,
-  password,
-}: AuthCredentials) => {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (err) {
-    if (err instanceof Error) {
-      console.error(err);
-      alert(err.message);
-    } else {
-      alert('An unknown error occured');
-    }
-  }
-};
 
 const registerWithEmailAndPassword = async ({
   email,
@@ -68,10 +47,4 @@ const logout = () => {
   signOut(auth);
 };
 
-export {
-  auth,
-  db,
-  logInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  logout,
-};
+export { auth, db, registerWithEmailAndPassword, logout };

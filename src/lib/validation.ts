@@ -9,7 +9,7 @@ const formSchema = z.object({
     .regex(/[@!*?$%&]/, {
       message: 'Password must include a special character',
     })
-    .regex(/[a-z]/i, { message: 'Password must include at least one letter' }),
+    .regex(/\p{L}/u, { message: 'Password must include at least one letter' }),
 });
 
 export default formSchema;

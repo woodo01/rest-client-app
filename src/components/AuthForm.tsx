@@ -7,8 +7,13 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { AuthCredentials } from '@/app/types/shared';
 
-export function AuthForm() {
+interface AuthFormProps {
+  onSubmit: (data: AuthCredentials) => void;
+}
+
+export function AuthForm({ onSubmit }: AuthFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -16,10 +21,6 @@ export function AuthForm() {
       password: '',
     },
   });
-
-  // function onSubmit(values: z.infer<typeof formSchema>) {
-  //   //submit logic here
-  // }
 
   return (
     <Form {...form}>
