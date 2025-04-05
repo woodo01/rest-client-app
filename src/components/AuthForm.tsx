@@ -1,7 +1,14 @@
 'use client';
 
 import formSchema from '@/lib/validation';
-import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from './ui/form';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -39,6 +46,7 @@ export function AuthForm({ onSubmit }: AuthFormProps) {
                 <FormControl>
                   <Input {...field} className="w-full max-w-sm" />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -49,8 +57,9 @@ export function AuthForm({ onSubmit }: AuthFormProps) {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input {...field} className="max-w-sm" />
+                  <Input type="password" {...field} className="max-w-sm" />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />

@@ -12,7 +12,6 @@ export const handleRegister = async ({ email, password }: AuthCredentials) => {
     const user = res.user;
     await addDoc(collection(db, 'users'), {
       uid: user.uid,
-      name,
       authProvider: 'local',
       email,
     });
