@@ -27,10 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`min-h-screen flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <main>{children}</main>
+        <main className="flex flex-col flex-grow justify-start self-center items-center pt-[56px]">
+          {children}
+        </main>
         <footer className="flex justify-between items-end p-2">
           <a
             href="https://github.com/woodo01/graphiql-app"

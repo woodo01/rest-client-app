@@ -3,9 +3,10 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
-import { auth } from '@/firebaseConfig';
+import { addDoc, collection } from 'firebase/firestore';
+import { auth, db } from '@/firebaseConfig';
 
-export const handleRegister = ({ email, password }: AuthCredentials) => {
+export const handleRegister = async ({ email, password }: AuthCredentials) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -16,8 +17,12 @@ export const handleRegister = ({ email, password }: AuthCredentials) => {
       email,
     });
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    if (err instanceof Error) {
+      console.error(err);
+      alert(err.message);
+    } else {
+      alert('An unknown error occured');
+    }
   }
 };
 
