@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# graphiql-app
 
-## Getting Started
+## 📌 Project Description
+This application mimics core functionalities of REST clients like Postman or Thunder Client. It allows users to test REST APIs by constructing and sending requests with different methods, headers, and payloads. Features include:
 
-First, run the development server:
+Authentication (Firebase)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+REST Client with method, URL, headers, and body inputs
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Generated code section for multiple languages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Request history (stored in local storage)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Variables support (with template-like syntax: {{variable}})
 
-## Learn More
+Internationalization (2+ languages)
 
-To learn more about Next.js, take a look at the following resources:
+Error handling and private routes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Responsive, accessible design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 🚀 Live Demo 
+🔗 Deployed Link tbd
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📽️ Presentation Video
+🎥 YouTube Video (tbd)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👥 Team Members
+Andrey Tishchenko
+
+Ivan Sigaev
+
+Joelle Marianek
+
+## 📁 Repository Structure
+main – contains only this README
+
+develop – main development branch
+
+Other feature branches follow Git Flow.
+
+## 🔗 Useful Links
+[📝 Task Description](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/final.md)
+
+[🎯 GitHub Projects Board](https://github.com/users/woodo01/projects/1)
+
+[🔄 Retro Board](https://trello.com/b/zuz53dWh/retro)
+
+
+## 🧪 Run Locally
+Prerequisites
+Node.js 18+
+Yarn / npm
+Firebase setup (with credentials)
+
+<pre> bash git clone https://github.com/your-org/rest-client-app.git cd rest-client-app npm install npm run dev</pre>
+
+## 📦 Scripts
+bash
+npm run dev             # run dev server
+npm run build           # production build
+npm run test            # run tests
+npm run lint            # run ESLint
+npm run prettier-fix    # auto-format code
+
+## 🔐 Authentication
+Implemented using [Firebase] with email/password. Client-side validation ensures security and usability.
+
+## 🧪 Testing
+Testing library: [Jest, React Testing Library]
+
+Coverage: tbd
+
+Husky hooks:
+
+pre-commit: lint
+
+pre-push: test
+
+## 🌍 Internationalization
+Supports at least 2 languages (English and German).
+
+## 📜 License
+MIT – free to use and modify.
