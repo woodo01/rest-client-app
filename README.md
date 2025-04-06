@@ -24,7 +24,7 @@ Responsive, accessible design
 🔗 Deployed Link tbd
 
 ## 📽️ Presentation Video
-🎥 YouTube Video (Short tbd)
+🎥 YouTube Video (tbd)
 
 ## 👥 Team Members
 Andrey Tishchenko
@@ -54,7 +54,7 @@ Node.js 18+
 Yarn / npm
 Firebase setup (with credentials)
 
-<pre> ```bash git clone https://github.com/your-org/rest-client-app.git cd rest-client-app npm install npm run dev ``` </pre>
+<pre> bash git clone https://github.com/your-org/rest-client-app.git cd rest-client-app npm install npm run dev</pre>
 
 ## 📦 Scripts
 bash
