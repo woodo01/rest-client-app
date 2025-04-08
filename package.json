@@ -2,9 +2,9 @@
   "name": "graphiql-app",
   "description": "A lightweight REST client inspired by Postman, built with Next.js and TypeScript.",
   "authors": [
-    "Author Ivan Sigaev",
-    "Author Andrey Tishchenko",
-    "Author Joelle Marianek>"
+    "Ivan Sigaev",
+    "Andrey Tishchenko",
+    "Joelle Marianek"
   ],
   "version": "0.1.0",
   "private": true,
