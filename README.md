@@ -13,7 +13,7 @@ Request history (stored in local storage)
 
 Variables support (with template-like syntax: {{variable}})
 
-Internationalization (2+ languages)
+Internationalization (2 languages)
 
 Error handling and private routes
 
@@ -27,11 +27,11 @@ Responsive, accessible design
 🎥 YouTube Video (tbd)
 
 ## 👥 Team Members
-Andrey Tishchenko
+[Andrey Tishchenko](https://github.com/AndreyTishchenko)
 
-Ivan Sigaev
+[Ivan Sigaev](https://github.com/woodo01)
 
-Joelle Marianek
+[Joelle Marianek](https://github.com/JoMarianek)
 
 ## 📁 Repository Structure
 main – contains only this README
@@ -54,18 +54,17 @@ Node.js 18+
 Yarn / npm
 Firebase setup (with credentials)
 
-<pre> bash git clone https://github.com/your-org/rest-client-app.git cd rest-client-app npm install npm run dev</pre>
+<pre> 
+git clone https://github.com/your-org/rest-client-app.git 
+cd rest-client-app npm install 
+npm run dev
+</pre>
 
 ## 📦 Scripts
-bash
-npm run dev             # run dev server
-npm run build           # production build
-npm run test            # run tests
-npm run lint            # run ESLint
-npm run prettier-fix    # auto-format code
+<pre>```bash npm run dev # run dev server npm run build # production build npm run test # run tests npm run lint # run ESLint npm run prettier-fix # auto-format code ``` </pre>
 
 ## 🔐 Authentication
-Implemented using [Firebase] with email/password. Client-side validation ensures security and usability.
+Implemented using Firebase with email/password. Client-side validation ensures security and usability.
 
 ## 🧪 Testing
 Testing library: [Jest, React Testing Library]
@@ -79,7 +78,7 @@ pre-commit: lint
 pre-push: test
 
 ## 🌍 Internationalization
-Supports at least 2 languages (English and German).
+Supports 2 languages (English and German).
 
 ## 📜 License
 MIT – free to use and modify.
