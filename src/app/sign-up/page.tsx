@@ -2,7 +2,7 @@
 import AuthForm from '@/components/AuthForm';
 import { handleRegister } from '@/lib/auth';
 
-const SignUp = () => {
+const SignUp = (): JSX.Element => {
   return (
     <div className="pt-32">
       <h2>Sign Up</h2>

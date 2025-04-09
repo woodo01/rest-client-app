@@ -24,7 +24,7 @@ const db = getFirestore(app);
 const registerWithEmailAndPassword = async ({
   email,
   password,
-}: AuthCredentials) => {
+}: AuthCredentials): Promise<void> => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -43,7 +43,7 @@ const registerWithEmailAndPassword = async ({
   }
 };
 
-const logout = () => {
+const logout = (): void => {
   signOut(auth);
 };
 

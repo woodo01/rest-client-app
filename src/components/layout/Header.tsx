@@ -11,11 +11,11 @@ import {
 import Image from 'next/image';
 import clsx from 'clsx';
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const [position, setPosition] = React.useState('top');
   const [headercolor, setHeaderColor] = useState(false);
 
-  const changeColor = () => {
+  const changeColor = (): void => {
     if (window.scrollY >= 56) {
       setHeaderColor(true);
     } else {

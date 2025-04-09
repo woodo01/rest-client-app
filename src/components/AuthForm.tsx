@@ -21,7 +21,7 @@ interface AuthFormProps {
   onSubmit: (data: AuthCredentials) => void;
 }
 
-export function AuthForm({ onSubmit }: AuthFormProps) {
+export function AuthForm({ onSubmit }: AuthFormProps): JSX.Element {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

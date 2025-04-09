@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
-export default function Home() {
+
+export default function Home(): JSX.Element {
   const [user, loading] = useAuthState(auth);
 
   if (loading) return <p>Loading...</p>;

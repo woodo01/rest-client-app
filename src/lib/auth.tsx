@@ -6,7 +6,10 @@ import {
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from '@/firebaseConfig';
 
-export const handleRegister = async ({ email, password }: AuthCredentials) => {
+export const handleRegister = async ({
+  email,
+  password,
+}: AuthCredentials): Promise<void> => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -25,7 +28,10 @@ export const handleRegister = async ({ email, password }: AuthCredentials) => {
   }
 };
 
-export const handleLogin = async ({ email, password }: AuthCredentials) => {
+export const handleLogin = async ({
+  email,
+  password,
+}: AuthCredentials): Promise<void> => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {

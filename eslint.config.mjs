@@ -20,6 +20,12 @@ const eslintConfig = [
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'error',
     },
+    ignores: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/coverage/**',
+      '**/ui/**'
+    ]
   }
 ];
 

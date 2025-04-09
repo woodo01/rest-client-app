@@ -7,7 +7,7 @@ import { auth } from '@/firebaseConfig';
 import AuthForm from '@/components/AuthForm';
 import { handleLogin } from '@/lib/auth';
 
-const SignIn = () => {
+const SignIn = (): JSX.Element => {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
 
