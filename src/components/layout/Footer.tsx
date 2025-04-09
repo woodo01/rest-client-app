@@ -21,7 +21,7 @@ const Footer = (): JSX.Element => {
           alt="Rolling Scopes Logo"
           width={45}
           height={45}
-        ></Image>
+        />
       </a>
     </footer>
   );
