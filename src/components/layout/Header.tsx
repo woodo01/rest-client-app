@@ -25,6 +25,10 @@ const Header = (): JSX.Element => {
 
   useEffect(() => {
     window.addEventListener('scroll', changeColor);
+
+    return (): void => {
+      window.removeEventListener('scroll', changeColor);
+    };
   }, []);
 
   return (
