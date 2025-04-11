@@ -1,9 +1,9 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} **/
-export const config = {
+import type { JestConfigWithTsJest } from 'ts-jest';
+const config: JestConfigWithTsJest = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\.tsx?$': ['ts-jest', {}],
+    '^.+\\.tsx?$': ['ts-jest', {}],
     '^.+\\.jsx?$': ['babel-jest', { presets: ['next/babel'] }],
   },
   moduleNameMapper: {
@@ -21,3 +21,5 @@ export const config = {
     '!**/node_modules/**',
   ],
 };
+
+export default config;
