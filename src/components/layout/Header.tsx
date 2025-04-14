@@ -1,20 +1,20 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
 import Image from 'next/image';
 import clsx from 'clsx';
 import SelectDropdown from '../ui/select-dropdown';
+import Link from 'next/link';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebaseConfig';
+import { handleSignOut } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 const Header = (): JSX.Element => {
   const [position, setPosition] = useState('top');
   const [headercolor, setHeaderColor] = useState(false);
+  const [user, loading] = useAuthState(auth);
+  const router = useRouter();
 
   const changeColor = (): void => {
     if (window.scrollY >= 56) {
@@ -32,11 +32,18 @@ const Header = (): JSX.Element => {
     };
   }, []);
 
+  const onSignOut = async (): Promise<void> => {
+    await handleSignOut();
+    router.push('/');
+  };
+
+  if (loading) return <p>Loading...</p>;
+
   return (
     <header
       className={clsx(
         headercolor ? 'bg-muted-foreground' : 'bg-background',
-        'flex justify-around p-2 fixed top-0 right-0 left-0 transition-colors duration-300'
+        'flex flex-col justify-around p-2 fixed top-0 right-0 left-0 transition-colors duration-300'
       )}
     >
       <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
@@ -49,22 +56,19 @@ const Header = (): JSX.Element => {
           { label: 'Deutsch', value: 'bottom' },
         ]}
       />
-      <DropdownMenu>
-        <DropdownMenuTrigger className="p-1 border rounded-sm border-blue-950">
-          Languages
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-            <DropdownMenuRadioItem value="top">English</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="bottom">
-              Deutsch
-            </DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
       <div className="flex gap-4">
-        <Button>Sign In</Button>
-        <Button>Sign Up</Button>
+        {user ? (
+          <Button onClick={onSignOut}>Log Out</Button>
+        ) : (
+          <>
+            <Link href={'/sign-in'}>
+              <Button>Sign In</Button>
+            </Link>
+            <Link href={'/sign-up'}>
+              <Button>Sign Up</Button>
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );
