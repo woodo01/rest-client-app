@@ -10,9 +10,10 @@ import {
 } from '../ui/dropdown-menu';
 import Image from 'next/image';
 import clsx from 'clsx';
+import SelectDropdown from '../ui/select-dropdown';
 
 const Header = (): JSX.Element => {
-  const [position, setPosition] = React.useState('top');
+  const [position, setPosition] = useState('top');
   const [headercolor, setHeaderColor] = useState(false);
 
   const changeColor = (): void => {
@@ -39,6 +40,15 @@ const Header = (): JSX.Element => {
       )}
     >
       <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
+      <SelectDropdown
+        label="Languages"
+        value={position}
+        onChange={setPosition}
+        menuitems={[
+          { label: 'English', value: 'top' },
+          { label: 'Deutsch', value: 'bottom' },
+        ]}
+      />
       <DropdownMenu>
         <DropdownMenuTrigger className="p-1 border rounded-sm border-blue-950">
           Languages
