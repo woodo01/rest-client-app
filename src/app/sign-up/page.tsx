@@ -2,7 +2,7 @@
 import AuthForm from '@/components/AuthForm';
 import { handleRegister } from '@/lib/auth';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
 
