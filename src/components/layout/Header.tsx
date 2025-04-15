@@ -11,7 +11,7 @@ import { handleSignOut } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
 const Header = (): JSX.Element => {
-  const [position, setPosition] = useState('top');
+  const [position, setPosition] = React.useState('top');
   const [headercolor, setHeaderColor] = useState(false);
   const [user, loading] = useAuthState(auth);
   const router = useRouter();

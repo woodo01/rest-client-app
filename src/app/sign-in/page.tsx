@@ -20,7 +20,7 @@ const SignIn = (): JSX.Element => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="pt-32">
+    <div className="flex flex-col justify-center items-center pt-32">
       <h2>Sign In</h2>
       <AuthForm onSubmit={handleLogin} />
     </div>

@@ -30,13 +30,10 @@ const SelectDropdown = ({
       <DropdownMenuContent>
         <DropdownMenuRadioGroup value={value} onValueChange={onChange}>
           {menuitems.map((item) => (
-            <DropdownMenuRadioItem
-              key={item.value}
-              value={item.value}
-            ></DropdownMenuRadioItem>
+            <DropdownMenuRadioItem key={item.value} value={item.value}>
+              {item.label}
+            </DropdownMenuRadioItem>
           ))}
-          <DropdownMenuRadioItem value="top">English</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="bottom">Deutsch</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
