@@ -43,7 +43,7 @@ const Header = (): JSX.Element => {
     <header
       className={clsx(
         headercolor ? 'bg-muted-foreground' : 'bg-background',
-        'flex flex-col justify-around p-2 fixed top-0 right-0 left-0 transition-colors duration-300'
+        'flex justify-around p-2 fixed top-0 right-0 left-0 transition-colors duration-300'
       )}
     >
       <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
