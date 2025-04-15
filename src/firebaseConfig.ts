@@ -47,4 +47,4 @@ const logout = (): void => {
   signOut(auth);
 };
 
-export { auth, db, registerWithEmailAndPassword, logout };
+export { auth, db, app, registerWithEmailAndPassword, logout };
