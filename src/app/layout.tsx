@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
-import Image from 'next/image';
+import Footer from '@/components/layout/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -23,36 +23,15 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): JSX.Element {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`min-h-screen flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <main>{children}</main>
-        <footer className="flex justify-between items-end p-2">
-          <a
-            href="https://github.com/woodo01/graphiql-app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Github Profile
-          </a>
-          <p>| 2025 |</p>
-          <a
-            href="https://rs.school/courses/reactjs"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src="/rss-logo.svg"
-              alt="Rolling Scopes Logo"
-              width={45}
-              height={45}
-            ></Image>
-          </a>
-        </footer>
+        <main className="flex-1 pt-[56px]">{children}</main>
+        <Footer />
       </body>
     </html>
   );
