@@ -2,6 +2,7 @@ import { AuthCredentials } from '@/app/types/shared';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from '@/firebaseConfig';
@@ -42,4 +43,8 @@ export const handleLogin = async ({
       alert('An unknown error occured');
     }
   }
+};
+
+export const handleSignOut = async (): Promise<void> => {
+  await signOut(auth);
 };

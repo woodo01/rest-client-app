@@ -7,7 +7,7 @@ import SelectDropdown from '../ui/select-dropdown';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
-import { handleSignOut } from '@/lib/utils';
+import { handleSignOut } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
 
 const Header = (): JSX.Element => {
