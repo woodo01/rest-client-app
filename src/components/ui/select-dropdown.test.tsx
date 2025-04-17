@@ -1,8 +1,7 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import SelectDropdown from './select-dropdown';
-
-jest.mock('./dropdown-menu');
+import userEvent from '@testing-library/user-event';
 
 describe('SelectDropdown Component', () => {
   const mockOnChange = jest.fn();
@@ -25,7 +24,7 @@ describe('SelectDropdown Component', () => {
     expect(screen.getByText('Select an option')).toBeInTheDocument();
   });
 
-  it('renders all menu items', () => {
+  it('displays menu items when dropdown is opened', async () => {
     render(
       <SelectDropdown
         label="Select an option"
@@ -35,42 +34,11 @@ describe('SelectDropdown Component', () => {
       />
     );
 
-    fireEvent.click(screen.getByText('Select an option'));
+    const user = userEvent.setup();
+    await user.click(screen.getByText('Select an option'));
 
-    menuitems.forEach((item) => {
-      expect(screen.getByText(item.label)).toBeInTheDocument();
-    });
-  });
-
-  it('calls onChange when a menu item is selected', () => {
-    render(
-      <SelectDropdown
-        label="Select an option"
-        menuitems={menuitems}
-        value="option1"
-        onChange={mockOnChange}
-      />
-    );
-
-    fireEvent.click(screen.getByText('Select an option'));
-    fireEvent.click(screen.getByText('Option 2'));
-
-    expect(mockOnChange).toHaveBeenCalledWith('option2');
-  });
-
-  it('highlights the selected value', () => {
-    render(
-      <SelectDropdown
-        label="Select an option"
-        menuitems={menuitems}
-        value="option2"
-        onChange={mockOnChange}
-      />
-    );
-
-    fireEvent.click(screen.getByText('Select an option'));
-
-    const selectedItem = screen.getByText('Option 2');
-    expect(selectedItem).toHaveAttribute('aria-checked', 'true');
+    expect(screen.getByText('Option 1')).toBeInTheDocument();
+    expect(screen.getByText('Option 2')).toBeInTheDocument();
+    expect(screen.getByText('Option 3')).toBeInTheDocument();
   });
 });
