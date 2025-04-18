@@ -4,8 +4,8 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect } from 'react';
 import { auth } from '@/firebaseConfig';
-import AuthForm from '@/components/AuthForm';
-import { handleLogin } from '@/lib/auth';
+import AuthForm from '@/app/[locale]/components/AuthForm';
+import { handleLogin } from '@/app/[locale]/lib/auth';
 
 const SignIn = (): JSX.Element => {
   const [user, loading] = useAuthState(auth);

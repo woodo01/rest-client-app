@@ -1,4 +1,4 @@
-import { AuthCredentials } from '@/app/types/shared';
+import { AuthCredentials } from '@/app/[locale]/types/shared';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,

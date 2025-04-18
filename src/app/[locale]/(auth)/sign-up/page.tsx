@@ -1,6 +1,6 @@
 'use client';
-import AuthForm from '@/components/AuthForm';
-import { handleRegister } from '@/lib/auth';
+import AuthForm from '@/app/[locale]/components/AuthForm';
+import { handleRegister } from '@/app/[locale]/lib/auth';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';

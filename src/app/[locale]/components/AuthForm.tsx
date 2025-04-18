@@ -1,6 +1,6 @@
 'use client';
 
-import formSchema from '@/lib/validation';
+import formSchema from '@/app/[locale]/lib/validation';
 import {
   Form,
   FormControl,
@@ -15,7 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card } from './ui/card';
-import { AuthCredentials } from '@/app/types/shared';
+import { AuthCredentials } from '@/app/[locale]/types/shared';
 
 interface AuthFormProps {
   onSubmit: (data: AuthCredentials) => void;

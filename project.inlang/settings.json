@@ -1,0 +1,7 @@
+{
+  "$schema": "https://inlang.com/schema/project-settings",
+  "baseLocale": "en",
+  "locales": ["en", "de"],
+  "modules": ["https://cdn.jsdelivr.net/npm/@inlang/plugin-json@4/dist/index.js"], // or use another storage module: https://inlang.com/c/plugins (i18next, json, inlang message format)
+  "settings": {}
+}
