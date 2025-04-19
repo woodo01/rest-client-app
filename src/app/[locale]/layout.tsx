@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/app/[locale]/components/layout/Header';
 import Footer from '@/app/[locale]/components/layout/Footer';
-import NextIntlCientProvider from 'next-intl';
+import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
 const geistSans = Geist({
@@ -29,7 +29,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <NextIntlCientProvider messages={messages}>
+    <NextIntlClientProvider messages={messages}>
       <html lang="en">
         <body
           className={`min-h-screen flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -39,6 +39,6 @@ export default async function RootLayout({
           <Footer />
         </body>
       </html>
-    </NextIntlCientProvider>
+    </NextIntlClientProvider>
   );
 }
