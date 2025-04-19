@@ -4,5 +4,8 @@
     "signIn": "Sign in",
     "signUp": "Sign up",
     "logOut": "Log Out"
+  },
+  "footer": {
+    "githubLink": "Github Profile"
   }
 }

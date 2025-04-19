@@ -1,6 +1,8 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 const Footer = (): JSX.Element => {
+  const t = useTranslations('footer');
   return (
     <footer className="flex justify-between items-end p-2">
       <a
@@ -8,7 +10,7 @@ const Footer = (): JSX.Element => {
         target="_blank"
         rel="noreferrer"
       >
-        Github Profile
+        {t('githubLink')}
       </a>
       <p>| 2025 |</p>
       <a

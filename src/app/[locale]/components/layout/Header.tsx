@@ -60,8 +60,8 @@ const Header = (): JSX.Element => {
         value={locale}
         onChange={switchLocale}
         menuitems={[
-          { label: 'English', value: 'top' },
-          { label: 'Deutsch', value: 'bottom' },
+          { label: 'English', value: 'en' },
+          { label: 'Deutsch', value: 'de' },
         ]}
       />
       <div className="flex gap-4">
