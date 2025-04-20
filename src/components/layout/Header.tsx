@@ -10,6 +10,7 @@ import { handleSignOut } from '@/auth/auth';
 import { useRouter } from 'next/navigation';
 import LocaleDropDown from "@/components/LocaleSelect";
 import { useTranslations } from "next-intl";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Header = (): JSX.Element => {
   const [position, setPosition] = React.useState('top');
@@ -50,6 +51,7 @@ const Header = (): JSX.Element => {
       <Link href="/">
         <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
       </Link>
+      <ThemeToggle />
       <LocaleDropDown />
       <div className="flex gap-4">
         {user ? (
