@@ -17,7 +17,7 @@ function PropertyEditor({
   onPropertyChange,
   items,
   placeholders,
-}: PropertyEditorProps) {
+}: PropertyEditorProps): JSX.Element {
   const t = useTranslations('rest');
   const [isHidden, setIsHidden] = useState(false);
   const { properties, addItem, removeItem, changeItemKey, changeItemValue } =
@@ -27,15 +27,17 @@ function PropertyEditor({
     onPropertyChange(Array.from(properties.values()));
   }, [properties, onPropertyChange]);
 
-  const onAddClick = () => {
+  const onAddClick = (): void => {
     addItem('', '');
     setIsHidden(false);
   };
 
-  const onKeyChanged = (index: string, value: string) => changeItemKey(index, value);
-  const onValueChanged = (index: string, value: string) => changeItemValue(index, value);
-  const onItemRemoved = (index: string) => removeItem(index);
-  const hideParams = () => setIsHidden(!isHidden);
+  const onKeyChanged = (index: string, value: string): void =>
+    changeItemKey(index, value);
+  const onValueChanged = (index: string, value: string): void =>
+    changeItemValue(index, value);
+  const onItemRemoved = (index: string): void => removeItem(index);
+  const hideParams = (): void => setIsHidden(!isHidden);
 
   return (
     <>

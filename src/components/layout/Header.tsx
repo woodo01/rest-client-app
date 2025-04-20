@@ -8,12 +8,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
 import { handleSignOut } from '@/auth/auth';
 import { useRouter } from 'next/navigation';
-import LocaleDropDown from "@/components/LocaleSelect";
-import { useTranslations } from "next-intl";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import LocaleDropDown from '@/components/LocaleSelect';
+import { useTranslations } from 'next-intl';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Header = (): JSX.Element => {
-  const [position, setPosition] = React.useState('top');
   const [headercolor, setHeaderColor] = useState(false);
   const [user] = useAuthState(auth);
   const router = useRouter();

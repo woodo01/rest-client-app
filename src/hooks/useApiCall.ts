@@ -2,8 +2,23 @@ import { useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { KeyValue } from '@/hooks/useRequestProperties';
 
-function useFetchData() {
-  const [response, setResponse] = useState<Record<string, unknown> | null>(null);
+interface UseFetchDataReturn {
+  response: Record<string, unknown> | null;
+  status: number | null;
+  loading: boolean;
+  fetchData: (
+    endPoint: string,
+    method: string,
+    body: string,
+    headers: KeyValue[],
+    variables: KeyValue[]
+  ) => Promise<void>;
+}
+
+function useFetchData(): UseFetchDataReturn {
+  const [response, setResponse] = useState<Record<string, unknown> | null>(
+    null
+  );
   const [status, setStatus] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -13,7 +28,7 @@ function useFetchData() {
     body: string,
     headers: KeyValue[],
     variables: KeyValue[]
-  ) {
+  ): Promise<void> {
     setResponse({});
     try {
       setLoading(true);

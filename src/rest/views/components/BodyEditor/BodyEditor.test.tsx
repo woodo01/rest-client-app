@@ -13,7 +13,7 @@ jest.mock('@monaco-editor/react', () => {
     'data-testid': string;
     onChange: (value: string) => void;
     value: string;
-  }) {
+  }): JSX.Element {
     return (
       <textarea
         data-testid={testId}
@@ -25,7 +25,7 @@ jest.mock('@monaco-editor/react', () => {
 });
 
 jest.mock('next-intl', () => ({
-  useTranslations: () => (key: string) => {
+  useTranslations: () => (key: string): string => {
     const translations: { [key: string]: string } = {
       body: 'Body',
       prettify: 'Prettify',

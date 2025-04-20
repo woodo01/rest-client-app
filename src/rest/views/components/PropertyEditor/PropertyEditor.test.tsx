@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import PropertyEditor from '@shared/components/PropertyEditor/PropertyEditor';
+import PropertyEditor from "@/rest/views/components/PropertyEditor/PropertyEditor";
 
 const headerValue = 'Header value';
 const headerKey = 'Header key';
 
 jest.mock('next-intl', () => ({
-  useTranslations: () => (key: string) => {
+  useTranslations: () => (key: string): string => {
     const translations: { [key: string]: string } = {
       headers: 'Headers',
       'header-key': headerKey,
@@ -102,7 +102,9 @@ describe('HeaderEditor', () => {
 
     fireEvent.change(valueInput, { target: { value: 'newValue' } });
 
-    expect(setHeaders).toHaveBeenCalledWith([{ key: 'key1', value: 'newValue' }]);
+    expect(setHeaders).toHaveBeenCalledWith([
+      { key: 'key1', value: 'newValue' },
+    ]);
   });
 
   it('calls setHeaders when updating a variable key', () => {
@@ -122,6 +124,8 @@ describe('HeaderEditor', () => {
 
     fireEvent.change(keyInput, { target: { value: 'newKey' } });
 
-    expect(setHeaders).toHaveBeenCalledWith([{ key: 'newKey', value: 'value1' }]);
+    expect(setHeaders).toHaveBeenCalledWith([
+      { key: 'newKey', value: 'value1' },
+    ]);
   });
 });
