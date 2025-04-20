@@ -1,11 +1,19 @@
 'use client';
 
-import { createContext, useContext, ReactNode, useState, useEffect, useCallback, useMemo } from 'react';
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
 import { auth } from '@/firebaseConfig';
 import { onAuthStateChanged, signOut, User } from '@firebase/auth';
-import { useTranslations } from "next-intl";
-import { createSession, removeSession } from "@/hooks/useSession";
-import { useToast } from "@/hooks/use-toast";
+import { useTranslations } from 'next-intl';
+import { createSession, removeSession } from '@/hooks/useSession';
+import { useToast } from '@/hooks/useToast';
 
 interface AuthContextType {
   isAuth: boolean;
@@ -29,10 +37,10 @@ const AuthContext = createContext<AuthContextType>({
 
 export function AuthProvider({
   children,
-   initialData: { isAuth: initialIsAuth = false, user: initialUser = null } = {
-     isAuth: false,
-     user: null,
-   },
+  initialData: { isAuth: initialIsAuth = false, user: initialUser = null } = {
+    isAuth: false,
+    user: null,
+  },
 }: AuthProviderProps): JSX.Element {
   const [user, setUser] = useState<User | null>(initialUser);
   const [isAuth, setIsAuth] = useState(initialIsAuth);

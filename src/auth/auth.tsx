@@ -7,7 +7,7 @@ import {
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from '@/firebaseConfig';
 import { FirebaseError } from '@firebase/app';
-import { toast } from '@/hooks/use-toast';
+import { toast } from '@/hooks/useToast';
 
 export const handleRegister = async ({
   email,
