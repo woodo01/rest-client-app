@@ -7,14 +7,13 @@ import SelectDropdown from '../ui/select-dropdown';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
-import { handleSignOut } from '@/lib/auth';
+import { handleSignOut } from '@/auth/auth';
 import { useRouter } from 'next/navigation';
-import Spinner from '../ui/spinner';
 
 const Header = (): JSX.Element => {
   const [position, setPosition] = React.useState('top');
   const [headercolor, setHeaderColor] = useState(false);
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const router = useRouter();
 
   const changeColor = (): void => {
@@ -38,8 +37,6 @@ const Header = (): JSX.Element => {
     router.push('/');
   };
 
-  if (loading) return <Spinner />;
-
   return (
     <header
       className={clsx(
@@ -47,7 +44,9 @@ const Header = (): JSX.Element => {
         'flex justify-around p-2 fixed top-0 right-0 left-0 transition-colors duration-300'
       )}
     >
-      <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
+      <Link href="/">
+        <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
+      </Link>
       <SelectDropdown
         label="Languages"
         value={position}
