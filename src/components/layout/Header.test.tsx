@@ -31,13 +31,33 @@ jest.mock('next/link', () => ({
     children,
 }));
 
+jest.mock('next-intl', () => ({
+  useTranslations:
+    () =>
+    (key: string): string =>
+      key,
+}));
+
+jest.mock('../../components/LocaleSelect', () => ({
+  __esModule: true,
+  default: (): JSX.Element => (
+    <div data-testid="locale-dropdown">Locale Dropdown</div>
+  ),
+}));
+
+jest.mock('../../components/ThemeToggle', () => ({
+  ThemeToggle: (): JSX.Element => (
+    <div data-testid="theme-toggle">Theme Toggle</div>
+  ),
+}));
+
 describe('Header Component', () => {
   it('renders sign in and sign up buttons when user is not logged in', () => {
     (useAuthState as jest.Mock).mockReturnValue([null, false]);
 
     render(<Header />);
 
-    expect(screen.getByText('Sign In')).toBeInTheDocument();
-    expect(screen.getByText('Sign Up')).toBeInTheDocument();
+    expect(screen.getByText('login')).toBeInTheDocument();
+    expect(screen.getByText('register')).toBeInTheDocument();
   });
 });

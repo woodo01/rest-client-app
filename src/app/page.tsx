@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { useAuth } from '@/auth/AuthContext';
 import { useTranslations } from 'next-intl';
+import routes from '@/routes';
 
 export default function Home(): JSX.Element {
   const { user } = useAuth();
@@ -13,18 +13,26 @@ export default function Home(): JSX.Element {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         {user ? (
           <>
-            <h1>Welcome back!</h1>
-            <p>REST Client | History | Variables</p>
+            <h1>
+              {t('welcome-back')}, {user?.email ?? ''}
+            </h1>
+            <div className="flex gap-4">
+              <Link href={routes.rest({ method: 'GET' })}>
+                {t('rest-client')}
+              </Link>
+              <Link href={routes.history}>{t('requests-history')}</Link>
+              <Link href={routes.variables}>{t('requests-variables')}</Link>
+            </div>
           </>
         ) : (
           <>
-            <h1>Welcome!</h1>
-            <Link href="/sign-in">
-              <Button variant="outline">{t('login')}</Button>
+            <h1>{t('welcome')}!</h1>
+            <h2> 👥 Team Members</h2>
+            <Link href="https://github.com/JoMarianek">Joelle Marianek</Link>
+            <Link href="https://github.com/AndreyTishchenko">
+              Andrey Tishchenko
             </Link>
-            <Link href="/sign-up">
-              <Button variant="outline">{t('register')}</Button>
-            </Link>
+            <Link href="https://github.com/woodo01">Ivan Sigaev</Link>
           </>
         )}
       </main>

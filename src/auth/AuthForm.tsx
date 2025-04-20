@@ -25,21 +25,23 @@ export function AuthForm({ onSubmit }: AuthFormProps): JSX.Element {
   const t = useTranslations('auth');
 
   const formSchema = z.object({
-    email: z.string({
-      message: t('required'),
-    }).email({
-      message: t('invalid-email'),
-    }),
+    email: z
+      .string({
+        message: t('required'),
+      })
+      .email({
+        message: t('invalid-email'),
+      }),
     password: z
       .string({
         message: t('required'),
       })
-      .min(8, { message: 'Password must contain at least 8 characters' })
-      .regex(/\d/, { message: 'Password must contain at least one number' })
+      .min(8, { message: t('password-min-length') })
+      .regex(/\d/, { message: t('password-number-required') })
       .regex(/[@!*?$%&]/, {
-        message: 'Password must include a special character',
+        message: t('password-special-required'),
       })
-      .regex(/\p{L}/u, { message: 'Password must include at least one letter' }),
+      .regex(/\p{L}/u, { message: t('password-letter-required') }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -83,7 +85,7 @@ export function AuthForm({ onSubmit }: AuthFormProps): JSX.Element {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">{t('submit')}</Button>
         </form>
       </Form>
     </Card>
