@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import clsx from 'clsx';
-import SelectDropdown from '../ui/select-dropdown';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
 import { handleSignOut } from '@/auth/auth';
 import { useRouter } from 'next/navigation';
+import LocaleDropDown from "@/components/LocaleSelect";
+import { useTranslations } from "next-intl";
 
 const Header = (): JSX.Element => {
   const [position, setPosition] = React.useState('top');
@@ -37,6 +38,8 @@ const Header = (): JSX.Element => {
     router.push('/');
   };
 
+  const t = useTranslations('shared');
+
   return (
     <header
       className={clsx(
@@ -47,25 +50,17 @@ const Header = (): JSX.Element => {
       <Link href="/">
         <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
       </Link>
-      <SelectDropdown
-        label="Languages"
-        value={position}
-        onChange={setPosition}
-        menuitems={[
-          { label: 'English', value: 'top' },
-          { label: 'Deutsch', value: 'bottom' },
-        ]}
-      />
+      <LocaleDropDown />
       <div className="flex gap-4">
         {user ? (
-          <Button onClick={onSignOut}>Log Out</Button>
+          <Button onClick={onSignOut}>{t('logout')}</Button>
         ) : (
           <>
             <Link href={'/sign-in'}>
-              <Button>Sign In</Button>
+              <Button>{t('login')}</Button>
             </Link>
             <Link href={'/sign-up'}>
-              <Button>Sign Up</Button>
+              <Button>{t('register')}</Button>
             </Link>
           </>
         )}

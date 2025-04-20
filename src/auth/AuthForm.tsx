@@ -16,12 +16,33 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { AuthCredentials } from '@/app/types/shared';
+import { useTranslations } from "next-intl";
+
 
 interface AuthFormProps {
   onSubmit: (data: AuthCredentials) => void;
 }
 
 export function AuthForm({ onSubmit }: AuthFormProps): JSX.Element {
+  const t = useTranslations('auth');
+
+  const formSchema = z.object({
+    email: z
+      .string({
+        message: t('required'),
+      })
+      .email({
+        message: t('invalid-email'),
+      }),
+    password: z
+      .string({
+        message: t('required'),
+      })
+      .min(1, {
+        message: t('required'),
+      }),
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,7 +63,7 @@ export function AuthForm({ onSubmit }: AuthFormProps): JSX.Element {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t('email')}</FormLabel>
                 <FormControl>
                   <Input {...field} className="w-full max-w-sm" />
                 </FormControl>
@@ -55,7 +76,7 @@ export function AuthForm({ onSubmit }: AuthFormProps): JSX.Element {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{t('password')}</FormLabel>
                 <FormControl>
                   <Input type="password" {...field} className="max-w-sm" />
                 </FormControl>
