@@ -25,6 +25,7 @@
     "header-logo-alt": "Site logo",
     "en": "🇬🇧 English",
     "ru": "🇷🇺 Русский",
+    "de": "🇩🇪 Deutsch",
     "select-language": "Select Language"
   },
   "auth": {
@@ -49,7 +50,12 @@
     "invalid-credentials": "Invalid credentials",
     "too-many-requests": "Too many requests. Please try again later.",
     "password-required": "Password is required for login",
-    "user-disabled": "User disabled"
+    "user-disabled": "User disabled",
+    "password-min-length": "Password must contain at least 8 characters",
+    "password-number-required": "Password must contain at least one number",
+    "password-special-required": "Password must include a special character",
+    "password-letter-required": "Password must include at least one letter",
+    "submit": "Submit"
   },
   "rest": {
     "send": "Send",
