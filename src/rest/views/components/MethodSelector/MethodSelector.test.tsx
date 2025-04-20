@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Methods } from "@/rest/constants";
+import { Methods } from '@/rest/constants';
 import MethodSelector from './MethodSelector';
 
 it('renders MethodSelector component with select element', () => {

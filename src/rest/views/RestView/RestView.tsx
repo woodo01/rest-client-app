@@ -14,14 +14,14 @@ import useUrlModifier from '@/hooks/useUrlModifier';
 import { ResponseField } from '../components/ResponseField';
 import { BodyEditor } from '../components/BodyEditor';
 import { MethodSelector } from '../components/MethodSelector';
-import PropertyEditor from "@/rest/views/components/PropertyEditor/PropertyEditor";
+import PropertyEditor from '@/rest/views/components/PropertyEditor/PropertyEditor';
 
 interface RestViewProps {
   method?: string;
   slug?: string[];
 }
 
-function RestView({ method: methodParam, slug }: RestViewProps) {
+function RestView({ method: methodParam, slug }: RestViewProps): JSX.Element {
   const [method, setMethod] = useState<MethodsType>(
     (methodParam?.toUpperCase() as MethodsType) || 'GET'
   );
@@ -38,18 +38,17 @@ function RestView({ method: methodParam, slug }: RestViewProps) {
     setHeaders,
     variables,
     setVariables,
-    historyPath,
   } = useUrlModifier(slug, searchParams, method);
 
   const { response, status, loading, fetchData } = useFetchData();
   // const { addHistory } = useRequestHistory();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEndPoint(e.target.value);
     setUrlError(false);
   };
 
-  const sendRequest = async () => {
+  const sendRequest = async (): Promise<void> => {
     setUrlError(false);
 
     if (!endPoint.trim() && headers.length === 0) {
@@ -79,7 +78,7 @@ function RestView({ method: methodParam, slug }: RestViewProps) {
     // });
   };
 
-  const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
       sendRequest();
     }
@@ -97,7 +96,10 @@ function RestView({ method: methodParam, slug }: RestViewProps) {
           onKeyDown={onKeyPress}
           className={`w-auto grow ${urlError ? 'border border-red-500' : ''}`}
         />
-        <Button variant={endPoint.length ? 'default' : 'secondary'} onClick={sendRequest}>
+        <Button
+          variant={endPoint.length ? 'default' : 'secondary'}
+          onClick={sendRequest}
+        >
           {t('send')}
         </Button>
       </div>

@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
 interface BodyEditorProps {
   body: string;
@@ -19,23 +19,25 @@ interface BodyEditorProps {
 
 type BodyFormat = 'JSON' | 'Plain Text';
 
-function BodyEditor({ body, setBody }: BodyEditorProps) {
+function BodyEditor({ body, setBody }: BodyEditorProps): JSX.Element {
   const [format, setFormat] = useState<BodyFormat>('JSON');
   const t = useTranslations('rest');
 
-  const editorRef = useRef<monacoEditor.editor.IStandaloneCodeEditor | null>(null);
+  const editorRef = useRef<monacoEditor.editor.IStandaloneCodeEditor | null>(
+    null
+  );
 
-  const onFormatChange = (newFormat: BodyFormat) => {
+  const onFormatChange = (newFormat: BodyFormat): void => {
     setFormat(newFormat);
   };
 
   const handleEditorDidMount = (
     editorInstance: monacoEditor.editor.IStandaloneCodeEditor
-  ) => {
+  ): void => {
     editorRef.current = editorInstance;
   };
 
-  const prettifyContent = () => {
+  const prettifyContent = (): void => {
     if (editorRef.current) {
       editorRef.current?.getAction('editor.action.formatDocument')?.run();
     }
@@ -54,7 +56,10 @@ function BodyEditor({ body, setBody }: BodyEditorProps) {
             <SelectItem value="Plain Text">{t('plain-text')}</SelectItem>
           </SelectContent>
         </Select>
-        <Button variant={body.length ? 'default' : 'secondary'} onClick={prettifyContent}>
+        <Button
+          variant={body.length ? 'default' : 'secondary'}
+          onClick={prettifyContent}
+        >
           {t('prettify')}
         </Button>
       </div>

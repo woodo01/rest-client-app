@@ -1,9 +1,9 @@
 import React from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { useTranslations } from 'next-intl';
-import { DropDownBtnProps } from "@/rest/constants";
+import { DropDownBtnProps } from '@/rest/constants';
 
-function DropDownBtn({ isHidden, onClick, text }: DropDownBtnProps) {
+function DropDownBtn({ isHidden, onClick, text }: DropDownBtnProps): JSX.Element {
   const t = useTranslations('rest');
   const show = t('show');
   const hide = t('hide');

@@ -15,7 +15,7 @@ jest.mock('next/image', () => {
     height: string;
     src: string;
     width: string;
-  }) {
+  }): JSX.Element {
     return <img src={src} alt={alt} width={width} height={height} />;
   }
   MockedImage.displayName = 'Image';
@@ -24,7 +24,7 @@ jest.mock('next/image', () => {
 });
 
 jest.mock('next-intl', () => ({
-  useTranslations: () => (key: string) => {
+  useTranslations: () => (key: string): string => {
     const translations: { [key: string]: string } = {
       'empty-placeholder': 'Enter the URL and click Send to get a response',
     };

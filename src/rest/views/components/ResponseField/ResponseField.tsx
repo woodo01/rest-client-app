@@ -16,12 +16,14 @@ function ResponseField({
   response,
   loading,
   title = 'response',
-}: ResponseFieldProps) {
+}: ResponseFieldProps): JSX.Element {
   const t = useTranslations('rest');
   const textColorClass =
-    status && status >= 200 && status < 300 ? 'text-green-500' : 'text-orange-500';
+    status && status >= 200 && status < 300
+      ? 'text-green-500'
+      : 'text-orange-500';
 
-  const getEditorValue = () => {
+  const getEditorValue = (): string => {
     if (loading) {
       return `${t('loading-response')}...`;
     }
@@ -41,7 +43,9 @@ function ResponseField({
           <p>
             {t('status')}
 
-            <span className={textColorClass}>{loading ? t('loading') : status}</span>
+            <span className={textColorClass}>
+              {loading ? t('loading') : status}
+            </span>
           </p>
           <Editor
             className="border px-1"

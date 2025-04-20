@@ -1,10 +1,10 @@
 'use client';
 
 import { notFound, useParams } from 'next/navigation';
-import { Methods } from "@/rest/constants";
-import { RestView } from "@/rest/views/RestView";
+import { Methods } from '@/rest/constants';
+import { RestView } from '@/rest/views/RestView';
 
-export default function Rest() {
+export default function Rest(): JSX.Element {
   const { method, slug } = useParams() as {
     method: string;
     slug: string[];
