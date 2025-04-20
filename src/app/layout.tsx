@@ -9,6 +9,8 @@ import { AuthProvider } from '@/auth/AuthContext';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { cookies } from "next/headers";
+import app from "@/app";
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,6 +34,7 @@ export default async function RootLayout({
 }>): Promise<React.JSX.Element> {
   const locale = await getLocale();
   const messages = await getMessages();
+  const session = (await cookies()).get(app.SESSION_COOKIE_NAME);
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -46,7 +49,11 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <AuthProvider>
+            <AuthProvider
+              initialData={{
+                isAuth: !!session?.value,
+              }}
+            >
               <GlobalLoading>
                 <Header />
                 <main className="flex-1 pt-[56px]">{children}</main>

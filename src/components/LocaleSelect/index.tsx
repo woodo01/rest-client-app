@@ -38,6 +38,12 @@ function LocaleDropDown(): JSX.Element {
         >
           {t(localesList[1])}
         </DropdownMenuItem>
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onClick={() => changeLang(localesList[2])}
+        >
+          {t(localesList[2])}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
