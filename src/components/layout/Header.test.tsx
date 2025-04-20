@@ -31,7 +31,6 @@ jest.mock('next/link', () => ({
     children,
 }));
 
-// Mock next-intl
 jest.mock('next-intl', () => ({
   useTranslations:
     () =>
@@ -39,7 +38,6 @@ jest.mock('next-intl', () => ({
       key,
 }));
 
-// Mock LocaleDropDown component
 jest.mock('../../components/LocaleSelect', () => ({
   __esModule: true,
   default: (): JSX.Element => (
@@ -47,7 +45,6 @@ jest.mock('../../components/LocaleSelect', () => ({
   ),
 }));
 
-// Mock ThemeToggle component
 jest.mock('../../components/ThemeToggle', () => ({
   ThemeToggle: (): JSX.Element => (
     <div data-testid="theme-toggle">Theme Toggle</div>

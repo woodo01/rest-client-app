@@ -9,8 +9,9 @@ import { AuthProvider } from '@/auth/AuthContext';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { cookies } from "next/headers";
-import app from "@/app";
+import { cookies } from 'next/headers';
+import app from '@/app';
+import { Toaster } from '@/components/ui/toaster';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -58,6 +59,7 @@ export default async function RootLayout({
                 <Header />
                 <main className="flex-1 pt-[56px]">{children}</main>
                 <Footer />
+                <Toaster />
               </GlobalLoading>
             </AuthProvider>
           </ThemeProvider>
