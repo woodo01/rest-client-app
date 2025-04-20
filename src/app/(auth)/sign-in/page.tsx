@@ -4,12 +4,11 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect } from 'react';
 import { auth } from '@/firebaseConfig';
-import AuthForm from '@/components/AuthForm';
+import AuthForm from '@/components/auth/AuthForm';
 import { handleLogin } from '@/lib/auth';
-import Spinner from '@/components/ui/spinner';
 
 const SignIn = (): JSX.Element => {
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const router = useRouter();
 
   useEffect(() => {
@@ -17,8 +16,6 @@ const SignIn = (): JSX.Element => {
       router.push('/');
     }
   }, [user, router]);
-
-  if (loading) return <Spinner />;
 
   return (
     <div className="flex flex-col justify-center items-center pt-32">

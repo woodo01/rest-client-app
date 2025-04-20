@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import React from "react";
+import GlobalLoading from '@/components/GlobalLoading';
+import { AuthProvider } from '@/components/auth/AuthContext';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -23,15 +26,20 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>): JSX.Element {
+}>): React.JSX.Element {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`min-h-screen flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
-        <Header />
-        <main className="flex-1 pt-[56px]">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <GlobalLoading>
+            <Header />
+            <main className="flex-1 pt-[56px]">{children}</main>
+            <Footer />
+          </GlobalLoading>
+        </AuthProvider>
       </body>
     </html>
   );
