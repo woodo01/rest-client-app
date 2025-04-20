@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { useAuth } from '@/components/auth/AuthContext';
+import { useAuth } from '@/auth/AuthContext';
 
 export default function Home(): JSX.Element {
   const { user } = useAuth();
