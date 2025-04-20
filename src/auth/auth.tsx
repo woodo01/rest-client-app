@@ -6,6 +6,8 @@ import {
 } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from '@/firebaseConfig';
+import { FirebaseError } from '@firebase/app';
+import { toast } from '@/hooks/use-toast';
 
 export const handleRegister = async ({
   email,
@@ -19,12 +21,15 @@ export const handleRegister = async ({
       authProvider: 'local',
       email,
     });
-  } catch (err) {
-    if (err instanceof Error) {
-      console.error(err);
-      alert(err.message);
-    } else {
-      alert('An unknown error occured');
+  } catch (error) {
+    if (error instanceof FirebaseError) {
+      toast({
+        title: error.code,
+        description: error.message,
+        variant: 'destructive',
+        duration: 3000,
+        color: 'red',
+      });
     }
   }
 };
@@ -35,12 +40,15 @@ export const handleLogin = async ({
 }: AuthCredentials): Promise<void> => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-  } catch (err) {
-    if (err instanceof Error) {
-      console.error(err);
-      alert(err.message);
-    } else {
-      alert('An unknown error occured');
+  } catch (error) {
+    if (error instanceof FirebaseError) {
+      toast({
+        title: error.code,
+        description: error.message,
+        variant: 'destructive',
+        duration: 3000,
+        color: 'red',
+      });
     }
   }
 };
