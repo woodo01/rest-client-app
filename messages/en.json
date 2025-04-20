@@ -12,6 +12,7 @@
   "shared": {
     "rest-client": "Rest Client",
     "requests-history": "Requests History",
+    "requests-variables": "Variables",
     "welcome": "Welcome",
     "welcome-back": "Welcome Back",
     "register": "Sign up",

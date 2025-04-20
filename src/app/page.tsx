@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/auth/AuthContext';
 import { useTranslations } from 'next-intl';
+import routes from "@/routes";
 
 export default function Home(): JSX.Element {
   const { user } = useAuth();
@@ -13,16 +14,20 @@ export default function Home(): JSX.Element {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         {user ? (
           <>
-            <h1>Welcome back!</h1>
-            <p>REST Client | History | Variables</p>
+            <h1>{t('welcome-back')}, {user?.email ?? ''}</h1>
+            <div className="flex gap-4">
+              <Link href={routes.rest({ method: 'GET' })}>{t('rest-client')}</Link>
+              <Link href={routes.history}>{t('requests-history')}</Link>
+              <Link href={routes.history}>{t('requests-variables')}</Link>
+            </div>
           </>
         ) : (
           <>
-            <h1>Welcome!</h1>
-            <Link href="/sign-in">
+            <h1>{t('welcome')}!</h1>
+            <Link href={routes.login}>
               <Button variant="outline">{t('login')}</Button>
             </Link>
-            <Link href="/sign-up">
+            <Link href={routes.register}>
               <Button variant="outline">{t('register')}</Button>
             </Link>
           </>

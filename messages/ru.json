@@ -12,6 +12,7 @@
   "shared": {
     "rest-client": "Rest Клиент",
     "requests-history": "История Запросов",
+    "requests-variables": "Переменные",
     "welcome": "Добро пожаловать",
     "welcome-back": "С возвращением",
     "register": "Зарегистрироваться",
