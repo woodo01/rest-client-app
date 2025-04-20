@@ -21,7 +21,7 @@ export default function Home(): JSX.Element {
                 {t('rest-client')}
               </Link>
               <Link href={routes.history}>{t('requests-history')}</Link>
-              <Link href={routes.history}>{t('requests-variables')}</Link>
+              <Link href={routes.variables}>{t('requests-variables')}</Link>
             </div>
           </>
         ) : (
