@@ -8,6 +8,7 @@ import GlobalLoading from '@/components/GlobalLoading';
 import { AuthProvider } from '@/auth/AuthContext';
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -39,13 +40,20 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <AuthProvider>
-            <GlobalLoading>
-              <Header />
-              <main className="flex-1 pt-[56px]">{children}</main>
-              <Footer />
-            </GlobalLoading>
-          </AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <AuthProvider>
+              <GlobalLoading>
+                <Header />
+                <main className="flex-1 pt-[56px]">{children}</main>
+                <Footer />
+              </GlobalLoading>
+            </AuthProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
