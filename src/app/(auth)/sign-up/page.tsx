@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
+import Spinner from '@/components/ui/spinner';
 
 const SignUp = (): JSX.Element => {
   const [user, loading] = useAuthState(auth);
@@ -16,7 +17,7 @@ const SignUp = (): JSX.Element => {
     }
   }, [user, router]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
 
   return (
     <div className="flex flex-col justify-center items-center pt-32">

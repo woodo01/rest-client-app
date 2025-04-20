@@ -1,6 +1,7 @@
 # graphiql-app
 
 ## 📌 Project Description
+
 This application mimics core functionalities of REST clients like Postman or Thunder Client. It allows users to test REST APIs by constructing and sending requests with different methods, headers, and payloads. Features include:
 
 Authentication (Firebase)
@@ -19,14 +20,16 @@ Error handling and private routes
 
 Responsive, accessible design
 
+## 🚀 Live Demo
 
-## 🚀 Live Demo 
 🔗 Deployed Link tbd
 
 ## 📽️ Presentation Video
+
 🎥 YouTube Video (tbd)
 
 ## 👥 Team Members
+
 [Andrey Tishchenko](https://github.com/AndreyTishchenko)
 
 [Ivan Sigaev](https://github.com/woodo01)
@@ -34,6 +37,7 @@ Responsive, accessible design
 [Joelle Marianek](https://github.com/JoMarianek)
 
 ## 📁 Repository Structure
+
 main – contains only this README
 
 develop – main development branch
@@ -41,14 +45,15 @@ develop – main development branch
 Other feature branches follow Git Flow.
 
 ## 🔗 Useful Links
+
 [📝 Task Description](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/final.md)
 
 [🎯 GitHub Projects Board](https://github.com/users/woodo01/projects/1)
 
 [🔄 Retro Board](https://trello.com/b/zuz53dWh/retro)
 
-
 ## 🧪 Run Locally
+
 Prerequisites
 Node.js 18+
 Yarn / npm
@@ -61,12 +66,15 @@ npm run dev
 </pre>
 
 ## 📦 Scripts
+
 <pre>```bash npm run dev # run dev server npm run build # production build npm run test # run tests npm run lint # run ESLint npm run prettier-fix # auto-format code ``` </pre>
 
 ## 🔐 Authentication
+
 Implemented using Firebase with email/password. Client-side validation ensures security and usability.
 
 ## 🧪 Testing
+
 Testing library: [Jest, React Testing Library]
 
 Coverage: tbd
@@ -78,7 +86,9 @@ pre-commit: lint
 pre-push: test
 
 ## 🌍 Internationalization
+
 Supports 2 languages (English and German).
 
 ## 📜 License
+
 MIT – free to use and modify.

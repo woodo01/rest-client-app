@@ -9,6 +9,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
 import { handleSignOut } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
+import Spinner from '../ui/spinner';
 
 const Header = (): JSX.Element => {
   const [position, setPosition] = React.useState('top');
@@ -37,7 +38,7 @@ const Header = (): JSX.Element => {
     router.push('/');
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
 
   return (
     <header
