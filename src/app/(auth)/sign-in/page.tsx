@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { auth } from '@/firebaseConfig';
 import AuthForm from '@/auth/AuthForm';
 import { handleLogin } from '@/auth/auth';
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl';
 
 const SignIn = (): JSX.Element => {
   const [user] = useAuthState(auth);

@@ -24,7 +24,7 @@ const methods = [
   Methods.OPTIONS,
 ];
 
-function MethodSelector({ method, setMethod }: MethodSelectorProps) {
+function MethodSelector({ method, setMethod }: MethodSelectorProps): JSX.Element {
   return (
     <Select value={method} onValueChange={setMethod}>
       <SelectTrigger className="w-auto gap-2">

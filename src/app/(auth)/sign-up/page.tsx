@@ -5,13 +5,12 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl';
 
 const SignUp = (): JSX.Element => {
   const [user] = useAuthState(auth);
   const router = useRouter();
   const t = useTranslations('auth');
-
 
   useEffect(() => {
     if (user) {

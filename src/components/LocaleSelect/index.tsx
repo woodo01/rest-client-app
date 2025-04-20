@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
   DropdownMenu,
@@ -8,15 +7,14 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import useLanguageSwitcher from '../../hooks/useLanguageSwitcher';
+import app from '@/app';
 
-function LocaleDropDown() {
+function LocaleDropDown(): JSX.Element {
   const t = useTranslations('shared');
   const { currentLocale, changeLanguage, localesList } = useLanguageSwitcher();
-  const [value, setValue] = useState(currentLocale);
 
-  const changeLang = (data: typeof value) => {
+  const changeLang = (data: (typeof app.locale)[number]): void => {
     changeLanguage(data);
-    setValue(data);
   };
 
   return (

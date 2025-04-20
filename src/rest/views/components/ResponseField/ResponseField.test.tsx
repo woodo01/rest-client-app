@@ -7,7 +7,7 @@ import ResponseField from './ResponseField';
 const testId = 'response-editor';
 
 jest.mock('next-intl', () => ({
-  useTranslations: () => (key: string) => {
+  useTranslations: () => (key: string): string => {
     const translations: { [key: string]: string } = {
       response: 'Response',
       status: 'Status',
@@ -20,17 +20,29 @@ jest.mock('next-intl', () => ({
 describe('ResponseField', () => {
   it('renders with null response and status', () => {
     render(
-      <ResponseField response={null} status={null} loading={false} title="response" />
+      <ResponseField
+        response={null}
+        status={null}
+        loading={false}
+        title="response"
+      />
     );
 
-    expect(screen.getByRole('heading', { name: /Response/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /Response/i })
+    ).toBeInTheDocument();
     expect(screen.queryByText(/Status/i)).not.toBeInTheDocument();
     expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
   });
 
   it('matches snapshot when response is null, loading is false, and status is 200', () => {
     const { asFragment } = render(
-      <ResponseField loading={false} response={null} status={200} title="response" />
+      <ResponseField
+        loading={false}
+        response={null}
+        status={200}
+        title="response"
+      />
     );
 
     expect(asFragment()).toMatchSnapshot();

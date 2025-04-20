@@ -1,6 +1,5 @@
 'use client';
 
-import formSchema from '@/auth/validation';
 import {
   Form,
   FormControl,
@@ -16,8 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { AuthCredentials } from '@/app/types/shared';
-import { useTranslations } from "next-intl";
-
+import { useTranslations } from 'next-intl';
 
 interface AuthFormProps {
   onSubmit: (data: AuthCredentials) => void;
@@ -27,20 +25,21 @@ export function AuthForm({ onSubmit }: AuthFormProps): JSX.Element {
   const t = useTranslations('auth');
 
   const formSchema = z.object({
-    email: z
-      .string({
-        message: t('required'),
-      })
-      .email({
-        message: t('invalid-email'),
-      }),
+    email: z.string({
+      message: t('required'),
+    }).email({
+      message: t('invalid-email'),
+    }),
     password: z
       .string({
         message: t('required'),
       })
-      .min(1, {
-        message: t('required'),
-      }),
+      .min(8, { message: 'Password must contain at least 8 characters' })
+      .regex(/\d/, { message: 'Password must contain at least one number' })
+      .regex(/[@!*?$%&]/, {
+        message: 'Password must include a special character',
+      })
+      .regex(/\p{L}/u, { message: 'Password must include at least one letter' }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({

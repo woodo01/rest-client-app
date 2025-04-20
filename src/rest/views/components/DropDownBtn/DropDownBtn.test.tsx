@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import DropDownBtn from './DropDownBtn';
 
 jest.mock('next-intl', () => ({
-  useTranslations: () => (key: string) => {
+  useTranslations: () => (key: string): string => {
     const translations: { [key: string]: string } = {
       hide: 'Hide',
       show: 'Show',
@@ -31,7 +31,9 @@ describe('BodyEditor', () => {
   });
 
   it('should show ChevronUp icon if isHidden false', () => {
-    render(<DropDownBtn isHidden={false} text="once more text" onClick={() => {}} />);
+    render(
+      <DropDownBtn isHidden={false} text="once more text" onClick={() => {}} />
+    );
     expect(screen.getByTestId('FiChevronUp')).toBeInTheDocument();
   });
 
