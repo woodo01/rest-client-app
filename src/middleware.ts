@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import app from "@/app";
-import routes, { protectedRoutes } from "@/routes";
+import app from '@/app';
+import routes, { protectedRoutes } from '@/routes';
 
 const { SESSION_COOKIE_NAME } = app;
 
@@ -13,8 +13,6 @@ export default function middleware(request: NextRequest): NextResponse {
 
     return paths.some((path) => request.nextUrl.pathname.indexOf(path) !== -1);
   });
-
-  console.log(isProtectedRoute);
 
   if (isProtectedRoute) {
     const isAuthRoute = protectedRoutes.some((route) => {
