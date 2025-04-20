@@ -3,17 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import clsx from 'clsx';
-import SelectDropdown from '../ui/select-dropdown';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebaseConfig';
-import { handleSignOut } from '@/lib/auth';
+import { handleSignOut } from '@/auth/auth';
 import { useRouter } from 'next/navigation';
+import LocaleDropDown from "@/components/LocaleSelect";
+import { useTranslations } from "next-intl";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Header = (): JSX.Element => {
   const [position, setPosition] = React.useState('top');
   const [headercolor, setHeaderColor] = useState(false);
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const router = useRouter();
 
   const changeColor = (): void => {
@@ -37,7 +39,7 @@ const Header = (): JSX.Element => {
     router.push('/');
   };
 
-  if (loading) return <p>Loading...</p>;
+  const t = useTranslations('shared');
 
   return (
     <header
@@ -46,26 +48,21 @@ const Header = (): JSX.Element => {
         'flex justify-around p-2 fixed top-0 right-0 left-0 transition-colors duration-300'
       )}
     >
-      <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
-      <SelectDropdown
-        label="Languages"
-        value={position}
-        onChange={setPosition}
-        menuitems={[
-          { label: 'English', value: 'top' },
-          { label: 'Deutsch', value: 'bottom' },
-        ]}
-      />
+      <Link href="/">
+        <Image src="/rest-api.svg" alt="Logo" width={40} height={40} />
+      </Link>
+      <ThemeToggle />
+      <LocaleDropDown />
       <div className="flex gap-4">
         {user ? (
-          <Button onClick={onSignOut}>Log Out</Button>
+          <Button onClick={onSignOut}>{t('logout')}</Button>
         ) : (
           <>
             <Link href={'/sign-in'}>
-              <Button>Sign In</Button>
+              <Button>{t('login')}</Button>
             </Link>
             <Link href={'/sign-up'}>
-              <Button>Sign Up</Button>
+              <Button>{t('register')}</Button>
             </Link>
           </>
         )}

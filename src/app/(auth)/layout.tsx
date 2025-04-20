@@ -12,21 +12,16 @@ const AuthLayout = ({
 }): JSX.Element => {
   const auth = getAuth(app);
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe: Unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         router.push('/');
-      } else {
-        setLoading(false);
       }
     });
 
     return unsubscribe;
   }, [auth, router]);
-
-  if (loading) return <p>Loading...</p>;
 
   return <>{children}</>;
 };
