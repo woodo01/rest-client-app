@@ -10,11 +10,11 @@ import { Input } from '@/components/ui/input';
 import { MethodsType } from '@/rest/constants';
 import useFetchData from '@/hooks/useApiCall';
 import useUrlModifier from '@/hooks/useUrlModifier';
-// import { useRequestHistory } from '@history/hooks';
 import { ResponseField } from '../components/ResponseField';
 import { BodyEditor } from '../components/BodyEditor';
 import { MethodSelector } from '../components/MethodSelector';
 import PropertyEditor from '@/rest/views/components/PropertyEditor/PropertyEditor';
+import { useRequestHistory } from '@/history/hooks';
 
 interface RestViewProps {
   method?: string;
@@ -38,10 +38,11 @@ function RestView({ method: methodParam, slug }: RestViewProps): JSX.Element {
     setHeaders,
     variables,
     setVariables,
+    historyPath,
   } = useUrlModifier(slug, searchParams, method);
 
   const { response, status, loading, fetchData } = useFetchData();
-  // const { addHistory } = useRequestHistory();
+  const { addHistory } = useRequestHistory();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEndPoint(e.target.value);
@@ -71,11 +72,11 @@ function RestView({ method: methodParam, slug }: RestViewProps): JSX.Element {
       variables
     );
 
-    // addHistory({
-    //   baseUrl: endPoint,
-    //   method: GET,
-    //   url: historyPath,
-    // });
+    addHistory({
+      baseUrl: endPoint,
+      method: method,
+      url: historyPath,
+    });
   };
 
   const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
