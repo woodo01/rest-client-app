@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { KeyValue } from '@/hooks/useRequestProperties';
+import useRequestVariables from '@/variables/hooks/useRequestVariables';
 
 interface UseFetchDataReturn {
   response: Record<string, unknown> | null;
@@ -21,6 +22,7 @@ function useFetchData(): UseFetchDataReturn {
   );
   const [status, setStatus] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const { variables: globalVariables } = useRequestVariables();
 
   async function fetchData(
     endPoint: string,
@@ -32,12 +34,17 @@ function useFetchData(): UseFetchDataReturn {
     setResponse({});
     try {
       setLoading(true);
+      const mergedVariables = [
+        ...new Map(
+          [...globalVariables, ...variables].map((obj) => [obj.key, obj])
+        ).values(),
+      ];
       const res = await axios.post('/api/fetchData', {
         endPoint,
         method,
         body,
         headers,
-        variables,
+        variables: mergedVariables,
       });
 
       setStatus(res.status);
