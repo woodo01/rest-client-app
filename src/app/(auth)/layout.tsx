@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, onAuthStateChanged, Unsubscribe } from 'firebase/auth';
 import { app } from '@/firebaseConfig';
+import Spinner from '@/components/ui/spinner';
 
 const AuthLayout = ({
   children,
@@ -26,7 +27,7 @@ const AuthLayout = ({
     return unsubscribe;
   }, [auth, router]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
 
   return <>{children}</>;
 };

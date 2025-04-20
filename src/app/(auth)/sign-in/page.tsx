@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { auth } from '@/firebaseConfig';
 import AuthForm from '@/components/AuthForm';
 import { handleLogin } from '@/lib/auth';
+import Spinner from '@/components/ui/spinner';
 
 const SignIn = (): JSX.Element => {
   const [user, loading] = useAuthState(auth);
@@ -17,7 +18,7 @@ const SignIn = (): JSX.Element => {
     }
   }, [user, router]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
 
   return (
     <div className="flex flex-col justify-center items-center pt-32">
