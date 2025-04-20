@@ -20,6 +20,8 @@
     "test:coverage": "jest --coverage --config=jest.config.ts"
   },
   "dependencies": {
+    "@commitlint/config-conventional": "^19.8.0",
+    "@commitlint/format": "^19.8.0",
     "@firebase/auth": "^1.10.0",
     "@hookform/resolvers": "5.0.0",
     "@monaco-editor/react": "^4.7.0",
